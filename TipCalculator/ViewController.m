@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *tipAmountLabel;
 @property (strong, nonatomic) IBOutlet UITextField *tipPercentageTextField;
 
+- (IBAction)resetButtonPressed:(id)sender;
 
 @property (nonatomic) NSString *amount;
 @property (nonatomic) NSString *tipAmount;
@@ -33,7 +34,7 @@
     self.billAmountTextField.delegate = self;
     self.tipPercentageTextField.delegate = self;
     [self setUpTextField];
-    self.tipAmountLabel.text = @" ";
+    //self.tipAmountLabel.text = @" ";
     
     
     
@@ -54,7 +55,7 @@
 
 - (IBAction)calculateTipPressed:(id)sender {
     
-    ///can't do == comparison here
+    ///can't do == comparison here do:
     if ([self.tipPercentageTextField.text isEqualToString:@""]) {
         
         //converts bill total to a float
@@ -82,5 +83,11 @@
     self.tipAmountLabel.text = tipResult;
     }
     
+}
+- (IBAction)resetButtonPressed:(id)sender {
+    
+    self.billAmountTextField.text = @" ";
+    self.tipAmountLabel.text = @" ";
+    self.tipPercentageTextField.text = @" ";
 }
 @end
